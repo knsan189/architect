@@ -22,11 +22,12 @@ p{font-size:18px; color: #666; line-height: 1.3;}
 .depth2 > li > a {padding:10px 20px; display: inline-block; font-weight: bold;}
 .depth3 > li{padding:10px 20px; color:#666; width:100%;}
 
+#section{margin-bottom:500px; z-index: 2; background: #fff;}
 .main{height:800px; display: flex; align-items: center;}
 .main ul{display: flex; justify-content: space-between;}
 .main ul li{width:48%}
 .main ul li:first-child>a{display: inline-block; padding:12px 36px; background: #62B0E2; color:#fff; font-weight: bold; border-radius: 5px;}
-
+.main .row img{border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; animation: borderAnimation 4s linear infinite;}
 
 .intro .row > ul{display: flex; justify-content: space-around;}
 .intro .row > ul > li{width:46%}
@@ -48,3 +49,28 @@ position: relative; height:571px; display: flex; align-items: center;}
 .video ul{display: flex;}
 .video ul > li {width:50%}
 .video .icon{display: flex;}
+
+.ani-fadeup{transform: translate(0, 100px);}
+.ani {opacity: 0; transition: 0.6s all;}
+.ani.show{opacity: 1; transform: none;}
+
+
+#footer{background: #0c161c; position: fixed; z-index: -1; bottom:0; width:100%;}
+
+@keyframes borderAnimation {
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%
+    }
+
+    33% {
+        border-radius: 30% 70% 66% 34% / 37% 36% 64% 63%
+    }
+
+    66% {
+        border-radius: 37% 63% 62% 38% / 32% 43% 57% 68%
+    }
+
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%
+    }
+}

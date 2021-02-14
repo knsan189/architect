@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
 
-    let tabbarLi = document.querySelectorAll('.tabbar > li')
+    const tabbarLi = document.querySelectorAll('.tabbar > li')
     for(let i=0;i<tabbarLi.length;i++){
         tabbarLi[i].addEventListener('click', function(){
             this.classList.add('active')
@@ -34,12 +34,20 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
 
+    const aniTriggerMargin = 100;
+    const aniElemetList = document.querySelectorAll('.ani')
 
+    const aniFunc = function(){
+        for(const element of aniElemetList){
+            if(!element.classList.contains('show')){
+                if(window.innerHeight > element.getBoundingClientRect().top + aniTriggerMargin){
+                    element.classList.add('show')
+                }
+            }
+        }
+    }
 
-
-
-
-
+     window.addEventListener('scroll', aniFunc)
 
 
 
