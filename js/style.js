@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', function () {
         aniFunc();
 
-        let sct = this.scrollY
+        let sct = this.scrollY 
         let header = document.getElementById('header')
 
         if (sct > 50 && !header.classList.contains('fixed')) {
@@ -49,46 +49,94 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-    const tabtitle = document.querySelectorAll('.tabtitle > li')
-    const contentsTag = document.querySelectorAll('.contents p')
-    // for (let i=0; i < tabtitle.length; i++) {
-    //     tabtitle[i].addEventListener('click', function () {
-    //         this.classList.add('on')
-    //     })
-    // }
-    for (let i = 0; i < contentsTag.length; i++) {
 
-        function clickEvent(status) {
-            if (contentsTag[i].textContent.includes(status)) {
-                contentsTag[i].parentNode.style.display = "block"
-                contentsTag[i].parentNode.classList.add('active')
+    // for (let i = 0; i < contentsTag.length; i++) {
 
-            } else {
-                contentsTag[i].parentNode.classList.remove('active')
-                contentsTag[i].parentNode.style.display = "none"
-            }
-        }
+    //     function clickEvent(status) { // 맞는 값을 찾게되면 넣어주는 이벤트
+    //         if (contentsTag[i].textContent.includes(status)) {
+    //             contentsTag[i].parentNode.classList.add('active')
+
+    //         } else {
+    //             contentsTag[i].parentNode.classList.remove('active')
+
+    //         }
+    //     }
 
         
-        tabtitle[0].addEventListener('click', function () { // ALL
-            if (!contentsTag[i].parentNode.classList.contains('active')) {
-                contentsTag[i].parentNode.style.display = "block"
-                contentsTag[i].parentNode.classList.add('active')
+    //     tabtitle[0].addEventListener('click', function () { // ALL 클릭
+    //         if (!contentsTag[i].parentNode.classList.contains('active')) {
+    //             contentsTag[i].parentNode.classList.add('active')
+    //         }
+    //     })
+    //     tabtitle[1].addEventListener('click', function () { // Building 클릭
+    //         clickEvent('Building')
+    //     })
+    //     tabtitle[2].addEventListener('click', function () {
+    //         clickEvent('Concept')
+    //     })
+    //     tabtitle[3].addEventListener('click', function () {
+    //         clickEvent('Design')
+    //     })
+    //     tabtitle[4].addEventListener('click', function () {
+    //         clickEvent('Motion')
+    //     })
+    // }
+    const tabtitle = document.querySelectorAll('.tabtitle > li')
+    const contentsTag = document.querySelectorAll('.contents p')
+
+
+    var tabTag
+    for(let i=0;i<tabtitle.length;i++){
+        tabtitle[i].addEventListener('click', function(){
+            tabTag = this.textContent
+            tabfilter(tabTag);
+            this.classList.add('active')
+            for(let siblings of this.parentNode.children){
+                if(siblings !== this){
+                    siblings.classList.remove('active')
+                }
             }
         })
-        tabtitle[1].addEventListener('click', function () { // Building
-            clickEvent('Building')
-        })
-        tabtitle[2].addEventListener('click', function () {
-            clickEvent('Concept')
-        })
-        tabtitle[3].addEventListener('click', function () {
-            clickEvent('Design')
-        })
-        tabtitle[4].addEventListener('click', function () {
-            clickEvent('Motion')
-        })
     }
+
+
+    function tabfilter(type){
+        for(let j=0;j<contentsTag.length;j++){
+
+            function showDisplay(display){
+                contentsTag[j].parentNode.style.display = display
+            }
+
+            var datatag = contentsTag[j].textContent
+            if(datatag.includes(type)){
+
+                showDisplay('block') 
+                setTimeout(function(){
+                    contentsTag[j].parentNode.classList.add('active')
+                }, 1500)
+                           
+            }
+            else if(tabTag.includes('ALL')){
+
+                showDisplay('block')
+                setTimeout(function(){
+                    contentsTag[j].parentNode.classList.add('active')
+                }, 1500)           
+
+            }   
+            else{
+
+                contentsTag[j].parentNode.classList.remove('active')
+                setTimeout(function(){
+                    contentsTag[j].parentNode.style.display = 'none'
+                }, 1500)
+
+            }
+        }
+    }
+
+
+
 
 
     var Slider = function(id, _web, _tab, _mobile, spacing){
@@ -122,7 +170,6 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         }
       
-        // DOM 만들기
         var container = DOM.container(id);
         var slider = DOM.slider(container);
         var temp = container.innerHTML;
@@ -134,10 +181,9 @@ window.addEventListener('DOMContentLoaded', function () {
           items[i].style.float = 'left';
           items[i].style.height = '100%';
           items[i].style.width = (sliderItemWidth-spacing)+ 'px';
-          items[i].style['margin-right'] = spacing+'px'; // 간격
+          items[i].style['margin-right'] = spacing+'px';
         }
       
-        // 화면 사이즈 수정시 발생하는 이벤트
         function resize(){
           left = 0;
           document.querySelector('#'+ id + ' .slider').style.left = left + 'px';
@@ -156,12 +202,11 @@ window.addEventListener('DOMContentLoaded', function () {
             var items = document.querySelector('#'+ id + ' .slider').children;
             for(var i=0; i<items.length; i++){
               items[i].style.width = sliderItemWidth + 'px';
-              items[i].style['margin-right'] = 0 + 'px'; // 간격
+              items[i].style['margin-right'] = 0 + 'px';
             }
           }
         }
       
-        // 디스플레이 갯수 설정 함수
         function setDisplayCount(count) {
           display = count;
       
@@ -175,7 +220,6 @@ window.addEventListener('DOMContentLoaded', function () {
           }
         }
       
-        // 반응형 디스플레이 갯수 조절
         var isResponsive = _tab != undefined && _mobile != undefined;
         if(isResponsive){
           window.onresize = resize;
@@ -214,7 +258,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 left = 0;
               }
               document.querySelector('#'+ id + ' .slider').style.left = left + 'px';
-            }, 2000)
+            }, 5000)
           },
           stop: function(){
             clearInterval(interval);
