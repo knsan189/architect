@@ -113,7 +113,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 showDisplay('block') 
                 setTimeout(function(){
                     contentsTag[j].parentNode.classList.add('active')
-                }, 1500)
+                }, 200)
                            
             }
             else if(tabTag.includes('ALL')){
@@ -121,7 +121,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 showDisplay('block')
                 setTimeout(function(){
                     contentsTag[j].parentNode.classList.add('active')
-                }, 1500)           
+                }, 200)           
 
             }   
             else{
@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 contentsTag[j].parentNode.classList.remove('active')
                 setTimeout(function(){
                     contentsTag[j].parentNode.style.display = 'none'
-                }, 1500)
+                }, 200)
 
             }
         }
