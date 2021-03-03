@@ -15,20 +15,22 @@ input,button{outline: 0;background: inherit;border:none}
 #header{border-bottom:1px solid#eaeaea; height:71px; transition: 0.3s ease-in; position: fixed; width:100%; background-color: #fff; z-index: 2; top:0;}
 #header .logo{display: inline-block;}
 #header .logo img{max-height: 30px;}
-#header .row{height:100%}
+#header .row{height:100%; display: flex; justify-content: space-between;}
+#header .menu-btn{display: none;}
 
+#header .header_right{display: flex; justify-content: space-between;align-items: center;}
 #nav{float:right; height:100%}
 #nav::after{content: ''; clear: both; display: block;}
-.depth1{display: flex; width:550px; justify-content: space-between;}
+.depth1{display: flex; width:363px; justify-content: space-between;}
 .depth1 > li{font-size: 14px; color:#666; height:100%; line-height: 70px;}
-.depth1 .webify{font-weight: bold; border:1px solid #eaeaea; line-height: 1; padding:12px 25px; margin-top:14px}
-.depth2{position: fixed; width:1140px; top:65px; left:50%; transform:translate(-50%, 0) ; z-index: 10; display: inline-flex;justify-content:space-between; line-height: 1.5; border:1px solid #eaeaea; background:#fff;opacity: 0; transition: 0.3s ease-out; visibility: hidden;}
+.depth2{position: fixed; width:1140px; top:65px; left:50%; transform:translate(-50%, 0) ; z-index: 10; display: flex;justify-content:space-between; line-height: 1.5; border:1px solid #eaeaea; background:#fff;opacity: 0; transition: 0.3s ease-out; visibility: hidden;}
 .depth2.on{opacity: 1; visibility: visible;}
 .depth2 > li{font-size:13px; padding:10px 0; width:25%; border-right:1px solid #eaeaea;}
 .depth2 > li:last-child{border:none}
 .depth2 > li > a {padding:10px 20px; display: inline-block; font-weight: bold;}
 .depth3 > li{padding:10px 20px; color:#666; width:100%;}
 
+.webify{font-weight: bold; border:1px solid #eaeaea; line-height: 1; padding:15px 25px; display: inline-block; margin-left:40px; font-size: 14px;}
 article{border-top:1px solid #eaeaea; padding:120px 0;}
 #section{margin-bottom:466px; margin-top:70px; z-index: 2; background: #fff;}
 
@@ -115,7 +117,7 @@ article{border-top:1px solid #eaeaea; padding:120px 0;}
 .story .textbox h4{font-size: 16px; color:#666}
 .story .textbox p{font-size:36px; color:#222; line-height: 1.2; padding-top:10px;}
 .story .textbox a{ border-bottom:1px solid #222; font-size: 14px; display: inline-block;}
-.story .imgbox {background: url(../img/10.jpg); background-size:cover; min-height:540px;}
+.story .imgbox {background: url(../img/10.jpg); background-size:cover; height:540px;}
 
 .globe .title{text-align: left;}
 .globe .title a{display: inline-block; padding:12px 36px; background: #62B0E2; color:#fff; font-weight: bold; border-radius: 5px; margin-top:50px}
@@ -125,11 +127,13 @@ article{border-top:1px solid #eaeaea; padding:120px 0;}
 .globe .imgbox > div{width:30%; margin-top:30px}
 
 .news ul{display: flex; justify-content: space-between; padding-top:60px}
-.news ul > li{min-height: 375px; width:31.5%; position: relative; border-radius: 5px; overflow: hidden; }
-.news ul > li:nth-child(1){background: url(../img/8.jpg) center; background-size: cover; }
-.news ul > li:nth-child(2){background: url(../img/11.jpg) center; background-size: cover;}
-.news ul > li:nth-child(3){background: url(../img/12.jpg) center; background-size: cover;}
-.news ul > li .textbox{position:absolute; bottom:0; left:0; padding:20px; background: -webkit-gradient(linear,left top,left bottom,from(transparent),to(rgba(0,0,0,.8)));}
+.news ul > li{width:31.5%; overflow: hidden; position: relative;}
+.news ul > li > .thumbnail{min-height: 375px; border-radius: 5px; overflow: hidden; transition: 0.4s all; }
+.news ul > li:hover > .thumbnail{transform: scale(1.1);}
+.news ul > li:nth-child(1) > .thumbnail{background: url(../img/8.jpg) center; background-size: cover; }
+.news ul > li:nth-child(2) > .thumbnail{background: url(../img/11.jpg) center; background-size: cover;}
+.news ul > li:nth-child(3) > .thumbnail{background: url(../img/12.jpg) center; background-size: cover;}
+.news ul > li .textbox{position:absolute; bottom:0; left:0; right:0; padding:20px; background: -webkit-gradient(linear,left top,left bottom,from(transparent),to(rgba(0,0,0,.8)));}
 .news ul > li .textbox p{color:#fff; line-height: 1.2; border-bottom:1px solid #eaeaea; padding-bottom:20px; margin-bottom: 10px;}
 .news ul > li .textbox span{color:#fff; font-size:14px;}
 

@@ -1,16 +1,26 @@
 window.addEventListener('DOMContentLoaded', function () {
 
-  let megaMenu = document.querySelector('.depth1 .menu')
-  let depth2 = document.querySelector('.depth2')
+  const megaMenu = document.querySelector('.depth1 .menu')
+  const depth2 = document.querySelector('.depth2')
+  const html = document.querySelector('html')
+
+
 
   megaMenu.addEventListener('mouseover', function () {
-    depth2.classList.add('on')
+    if (html.classList.contains('pc')) {
+      depth2.classList.add('on')
+    }
   })
   megaMenu.addEventListener('mouseout', function () {
-    depth2.classList.remove('on')
+    if (html.classList.contains('pc')) {
+      depth2.classList.remove('on')
+    }
   })
 
+
+
   const tabbarLi = document.querySelectorAll('.tabbar > li')
+
   for (let i = 0; i < tabbarLi.length; i++) {
     tabbarLi[i].addEventListener('click', function () {
       this.classList.add('active')
@@ -24,6 +34,130 @@ window.addEventListener('DOMContentLoaded', function () {
     })
   }
 
+
+
+  const menuBtn = document.querySelector('.menu-btn');
+  const nav = document.getElementById('nav')
+  const menuBtn2 = document.querySelector('.menu-btn2')
+
+  slideDown(menuBtn, nav);
+  slideDown(menuBtn2, depth2);
+
+  function slideDown(button, menu) {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (html.classList.contains('tablet')) {
+
+        let height;
+
+        if (!menu.classList.contains('on')) {
+          this.classList.add('on')
+          menu.classList.add('on')
+          menu.style.height = 'auto'
+
+          height = menu.clientHeight + 'px'
+
+          menu.style.height = '0px'
+
+          setTimeout(function () {
+            menu.style.height = height
+          }, 0)
+
+          menu.addEventListener('transitionend', function () {
+            menu.style.removeProperty('height')
+          }, {
+            once: true
+          })
+
+        } else {
+
+          height = menu.clientHeight + 'px'
+          menu.style.height = height
+          button.classList.remove('on')
+
+          setTimeout(() => {
+            menu.style.height = '0px'
+          }, 0)
+
+          menu.addEventListener('transitionend', function () {
+            menu.classList.remove('on')
+
+          }, {
+            once: true
+          })
+        }
+      }
+    })
+  }
+
+
+  const menuBtn3 = document.querySelectorAll('.menu-btn3')
+  const depth3ul = document.querySelectorAll('.depth3')
+
+  menuBtn3.forEach(function (e) {
+    e.addEventListener('click', function () {
+      if (html.classList.contains('tablet')) {
+        
+        let height;
+        const depth3 = e.previousElementSibling
+
+        if (!depth3.classList.contains('on')) {
+          depth3.classList.add('on')
+          e.classList.add('on')
+          height = depth3.clientHeight + 'px'
+          depth3.style.height = "0px"
+
+          setTimeout(function(){
+            depth3.style.height = height
+          },0)
+
+        }
+        else{
+          depth3.style.height = "0px"
+          depth3.addEventListener('transitionend', function(){
+            this.classList.remove('on')
+            this.style.removeProperty('height')
+            e.classList.remove('on')
+          }, {once: true})
+        }
+      }
+    })
+  })
+
+
+  window.addEventListener('resize', function () {
+    deviceResize();
+  })
+  deviceResize();
+
+
+  function deviceResize() {
+    let deviceWidth = document.body.offsetWidth;
+    const tabletSize = 960
+
+
+    if (deviceWidth > tabletSize) {
+      html.classList.add('pc')
+      html.classList.remove('tablet')
+      nav.style.height = "100%";
+      nav.classList.remove('on')
+      menuBtn.classList.remove('on')
+      menuBtn2.classList.remove('on')
+      menuBtn3.forEach(e =>{ e.classList.remove('on')})
+      depth3ul.forEach(e =>{ e.classList.remove('on')})
+    } else {
+      html.classList.add('tablet')
+      html.classList.remove('pc')
+      nav.classList.remove('on')
+      menuBtn.classList.remove('on')
+      menuBtn2.classList.remove('on')
+      menuBtn3.forEach(e =>{ e.classList.remove('on')})
+      depth3ul.forEach(e =>{ e.classList.remove('on')})
+    }
+  }
+
+
+
   const aniTriggerMargin = 100;
   const aniElemetList = document.querySelectorAll('.ani')
   const aniFunc = function () {
@@ -36,27 +170,26 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  
+
   window.addEventListener('scroll', function () {
     aniFunc();
 
     var sct = this.scrollY
     const header = document.getElementById('header')
-    
+
     if (sct > 50 && !header.classList.contains('fixed')) {
       header.classList.add('fixed')
     } else if (sct <= 50 && header.classList.contains('fixed')) {
       header.classList.remove('fixed')
     }
 
-    var intro =  document.querySelector('.intro')
+    var intro = document.querySelector('.intro')
     var introLocation = window.pageYOffset + intro.getBoundingClientRect().top
     var topBtn = document.getElementById('top-btn')
 
-    if(sct > introLocation && !intro.classList.contains('active')){
-        topBtn.classList.add('active')
-    }
-    else{
+    if (sct > introLocation && !intro.classList.contains('active')) {
+      topBtn.classList.add('active')
+    } else {
       topBtn.classList.remove('active')
     }
   })
@@ -118,7 +251,6 @@ window.addEventListener('DOMContentLoaded', function () {
   const playBtn = document.querySelector('.playbox')
   const videoBox = document.querySelector('.videoContent')
   const closeBtn = document.querySelector('.closebtn')
-  const videoSrc = videoBox.children[0].getAttribute['src']
 
   playBtn.addEventListener('click', function (e) {
     e.preventDefault()
@@ -131,148 +263,7 @@ window.addEventListener('DOMContentLoaded', function () {
   })
 
 
-  var Slider = function (id, _web, _tab, _mobile, spacing) {
-    var containerWidth = 0;
-    var sliderItemWidth = 0;
-    var totalCount = 0;
-    var spacing = spacing;
-    var display = _web;
-    var left = 0;
-    var interval;
 
-    var DOM = {
-      container: function (id) {
-        var dom = document.querySelector('#' + id);
-        dom.className = 's-container';
-        dom.style.position = 'relative';
-        dom.style.overflow = 'hidden';
-        return dom;
-      },
-      slider: function (container) {
-        totalCount = container.children.length;
-
-        var dom = document.createElement('div');
-        dom.className = 'slider'
-        dom.style.position = 'relative';
-        dom.style.overflow = 'hidden';
-        dom.style.height = '100%';
-        dom.style.left = 0;
-        dom.style.transition = 'left .6s';
-        return dom;
-      }
-    }
-
-    var container = DOM.container(id);
-    var slider = DOM.slider(container);
-    var temp = container.innerHTML;
-    container.innerHTML = '';
-    slider.innerHTML = temp;
-    container.appendChild(slider);
-    var items = document.querySelector('#' + id + ' .slider').children;
-    for (var i = 0; i < items.length; i++) {
-      items[i].style.float = 'left';
-      items[i].style.height = '100%';
-      items[i].style.width = (sliderItemWidth - spacing) + 'px';
-      items[i].style['margin-right'] = spacing + 'px';
-    }
-
-    function resize() {
-      left = 0;
-      document.querySelector('#' + id + ' .slider').style.left = left + 'px';
-
-      var innerWidth = window.innerWidth;
-      if (innerWidth >= 1000) {
-        setDisplayCount(_web);
-      } else if (innerWidth < 1000 && innerWidth >= 768) {
-        setDisplayCount(_tab);
-      } else if (innerWidth < 768) {
-        setDisplayCount(_mobile);
-      }
-
-      if (display === 1) {
-        spacing = 0;
-        var items = document.querySelector('#' + id + ' .slider').children;
-        for (var i = 0; i < items.length; i++) {
-          items[i].style.width = sliderItemWidth + 'px';
-          items[i].style['margin-right'] = 0 + 'px';
-        }
-      }
-    }
-
-    function setDisplayCount(count) {
-      display = count;
-
-      containerWidth = container.offsetWidth + spacing;
-      sliderItemWidth = containerWidth / display;
-
-      document.querySelector('#' + id + ' .slider').style.width = totalCount * sliderItemWidth + spacing * totalCount + 'px';
-      var items = document.querySelector('#' + id + ' .slider').children;
-      for (var i = 0; i < items.length; i++) {
-        items[i].style.width = (sliderItemWidth - spacing) + 'px';
-      }
-    }
-
-    var isResponsive = _tab != undefined && _mobile != undefined;
-    if (isResponsive) {
-      window.onresize = resize;
-    }
-    resize();
-
-
-    return {
-      setDisplayCount: setDisplayCount,
-      move: function (index) {
-        left = (-1) * sliderItemWidth * index;
-        document.querySelector('#' + id + ' .slider').style.left = left + 'px';
-      },
-      prev: function () {
-        left += sliderItemWidth;
-        var limit = 0;
-        if (left > limit) {
-          left = limit;
-        }
-        document.querySelector('#' + id + ' .slider').style.left = left + 'px';
-      },
-      next: function () {
-        left -= sliderItemWidth;
-        var limit = (-1) * sliderItemWidth * (totalCount - display);
-        if (left < limit) {
-          left = limit;
-        }
-        document.querySelector('#' + id + ' .slider').style.left = left + 'px';
-      },
-      auto: function () {
-        clearInterval(interval);
-        interval = setInterval(function () {
-          left -= sliderItemWidth;
-          var limit = (-1) * sliderItemWidth * (totalCount - display);
-          if (left < limit) {
-            left = 0;
-          }
-          document.querySelector('#' + id + ' .slider').style.left = left + 'px';
-        }, 5000)
-      },
-      stop: function () {
-        clearInterval(interval);
-      }
-    }
-  }
-
-  let buttonBox = document.querySelectorAll('.button-box > a')
-  for (let i = 0; i < buttonBox.length; i++) {
-    buttonBox[i].addEventListener('click', function (e) {
-      e.preventDefault()
-    })
-  }
-
-
-
-
-  var slider = new Slider('slider', 4, 3, 1, 0);
-  slider.auto();
-
-  var slider1 = new Slider('slider1', 4, 3, 1, 0);
-  slider1.auto();
 
 
 

@@ -1,2 +1,103 @@
 @charset "utf-8";
 
+
+@media(max-width:1500px){
+    .main .row img{width:100%; height:470px}
+    .main .row .back-pattern{right:1%; bottom:0%;}
+
+    
+}
+@media (max-width:1200px){
+
+    .row{max-width: 960px; }
+    .intro .row > ul > li > img{width:100%}
+
+}
+
+
+@media (max-width:960px){
+
+    #section{margin-bottom:501px;}
+    h1{font-size: 40px;}
+    h2{font-size: 28px;}
+
+    #header .row{width:100%; max-width:none;}
+    #header .logo{font-size:60px;}
+    #header .menu-btn{display: block; height:27px;}
+    #header .menu-btn span{width:25px; height:2px; background: #222; display: block; top:12px; position: relative;}
+    #header .menu-btn span::before{content: ''; position: absolute; width:25px; height:2px; background: #222; display: block; margin-top:-8px; transition:0.4s;}
+    #header .menu-btn span::after{content: ''; position: absolute; width:25px; height:2px; background: #222; display: block; bottom:-8px; transition: 0.4s; }
+
+    #header .menu-btn.on span{background:rgba(0,0,0,0);}
+    #header .menu-btn.on span::before{margin:0; transform: rotate(45deg);}
+    #header .menu-btn.on span::after{bottom:0; transform: rotate(-45deg);}
+
+    
+    #nav{display: none; position: absolute; width:100%; top:100%; left:0; background: #fff;border: 1px solid #eaeaea; float: none; overflow: hidden; transition: height 0.5s ease; height: auto;}
+    #nav.on{display: block;}
+    .depth1{width:100%; flex-wrap: wrap;}
+    .depth1 > li{width:100%; line-height:34px;}
+    .depth1 > li > a{padding:20px}
+    .depth2{position: relative;width:100%; transform: none;top:auto; left:auto; overflow: hidden; flex-wrap: wrap; border:none; transition: height 0.5s ease;}
+    .depth2 > li{width:100%; padding:0; position: relative;}
+    .depth2 > li > a{display: block; padding:8px 25px; font-weight: normal;}
+    .depth2:not(.on){display: none;}
+    .depth3:not(.on){display: none;}
+    .depth3{transition: 0.4s all; overflow: hidden;}
+    .depth3 > li{padding:10px 35px;}
+
+    .menu{position: relative;}
+    .menu .menu-btn2{width:20px; height:20px; position: absolute; right:16px; top:10px;}
+    .menu .menu-btn2 span{background: #666; width:8px; height:2px; display: block; position: absolute; top:50%;left:50%; margin-left:-4px; margin-top:-1px}
+    .menu .menu-btn2 span::after{background: #666; content: ''; display: block; position: absolute; transform: rotate(90deg); width:8px; height:2px; transition: 0.3s all;} 
+    .menu .menu-btn2.on span::after{transform: none;}
+
+
+    .depth2 .menu-btn3{width:20px; height:20px; position: absolute; right:16px; top:10px;}
+    .depth2 .menu-btn3 span{background: #666; width:8px; height:2px; display: block; position: absolute; top:50%;left:50%; margin-left:-4px; margin-top:-1px}
+    .depth2 .menu-btn3 span::after{background: #666; content: ''; display: block; position: absolute; transform: rotate(90deg); width:8px; height:2px; transition: 0.3s all;} 
+    .depth2 .menu-btn3.on span::after{transform: none;}
+
+    .webify{margin-right:25px;}
+    
+    .row {max-width: 720px;}
+    .main ul{flex-wrap: wrap;}
+    .main ul li{width:100%;}
+    .main ul li:nth-child(2){margin-top:30px;}
+
+
+    .intro .row > ul{flex-wrap: wrap;}
+    .intro .row > ul > li{width:100%; overflow: hidden;}
+    .intro .row > ul > li img{margin-top:-40%; margin-bottom:-40%;}
+
+
+    .video {height:auto}
+    .video ul{flex-wrap: wrap;}
+    .video ul > li{width:100%;}
+    .video ul li:nth-child(2){margin-top:30px;}
+    
+    .project .contents > div.active{width:50%}
+
+    .story ul{flex-wrap: wrap;}
+    .story ul > li{width:100% !important}
+    .story ul > li:nth-child(2){margin-top:30px;}
+    .story .textbox {width:100%; padding:60px 30px}
+    .story .textbox p{font-size: 25px;}
+    .story .imgbox{height:450px}
+
+
+    .globe ul{flex-wrap: wrap;}
+    .globe ul > li{width:100%;}
+    .globe ul > li:nth-child(2){margin-top:30px;}
+
+    .news ul{flex-wrap: wrap;}
+    .news ul > li{width:100%; margin-bottom:30px;}
+    .news ul > li:last-child{margin:0;}
+
+
+    #footer .Gimme .row{flex-wrap:wrap; justify-content: center; text-align: center; padding:40px 0;}
+    #footer .Gimme .row p{width:100%; padding-bottom:30px;}
+
+
+}
+
