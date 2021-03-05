@@ -17,6 +17,7 @@
 
 @media (max-width:960px){
 
+    .row {max-width: 720px;}
     #section{margin-bottom:501px;}
     h1{font-size: 40px;}
     h2{font-size: 28px;}
@@ -60,7 +61,7 @@
 
     .webify{margin-right:25px;}
     
-    .row {max-width: 720px;}
+   
     .main ul{flex-wrap: wrap;}
     .main ul li{width:100%;}
     .main ul li:nth-child(2){margin-top:30px;}
@@ -101,3 +102,18 @@
 
 }
 
+
+@media (max-width : 768px){
+    .row{max-width: 540px;}
+    .main .row img{height:390px}
+
+}
+
+@media(max-width:576px){
+    .row{width:100%; max-width: none;}
+    .intro .tabbar > li.active > p{height:75px}
+    .project .tabtitle li{margin:0;}
+
+    .project .contents > div.active{width:100%}
+    .globe .imgbox > div{width:50%; text-align: center;}
+}

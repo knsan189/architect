@@ -81,6 +81,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
           menu.addEventListener('transitionend', function () {
             menu.classList.remove('on')
+            menu.style.removeProperty('height')
 
           }, {
             once: true
