@@ -138,3 +138,29 @@ slider.auto();
 
 var slider1 = new Slider('slider1', 4, 3, 1, 0);
 slider1.auto();
+
+
+const sliderBox = document.getElementById('slider')
+
+sliderBox.addEventListener('mouseover', function(){
+    buttonBox.forEach(e =>{
+        setTimeout(function(){
+            e.classList.add('on');
+        },0)
+    })
+})
+sliderBox.addEventListener('mouseout', function(){
+    buttonBox.forEach(e => {
+        e.classList.remove('on');
+        // setTimeout(function(){
+        //     e.style.display = "none";
+        // },0)
+    })
+})
+buttonBox.forEach(e => e.addEventListener('mouseover', function(){
+    e.classList.add('on')
+}))
+
+buttonBox.forEach(e => e.addEventListener('mouseout', function(){
+    e.classList.remove('on')
+}))

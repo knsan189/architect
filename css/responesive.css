@@ -104,8 +104,10 @@
 
 
 @media (max-width : 768px){
+    #section{margin-bottom:630px;}
     .row{max-width: 540px;}
     .main .row img{height:390px}
+    #footer .sitemap .row > ul > li{width:50%; font-weight: bold;}
 
 }
 

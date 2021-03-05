@@ -12,7 +12,13 @@ input,button{outline: 0;background: inherit;border:none}
 .title{text-align: center;}
 .title span{font-size: 11px; color: #b5b5b5; letter-spacing: 2px; padding-bottom:20px; display: inline-block;}
 
-#header{border-bottom:1px solid#eaeaea; height:71px; transition: 0.3s ease-in; position: fixed; width:100%; background-color: #fff; z-index: 2; top:0;}
+#header{border-bottom:1px solid#eaeaea;transition: 0.3s ease-in; position: fixed; width:100%; background-color: #fff; z-index: 2; top:0;}
+#header .topmenu{border-bottom:1px solid #eaeaea}
+#header .topmenu .row{text-align: right; display: block; padding:7px 15px;}
+#header .topmenu .row a{font-size: 12px; border-right:1px solid #ccc ; display: inline-block; margin-right: 5px; padding-right: 10px;}
+#header .topmenu .row a:last-child{border: none;padding:0;margin:0;}
+
+
 #header .logo{display: inline-block;}
 #header .logo img{max-height: 30px;}
 #header .row{height:100%; display: flex; justify-content: space-between;}
@@ -23,7 +29,7 @@ input,button{outline: 0;background: inherit;border:none}
 #nav::after{content: ''; clear: both; display: block;}
 .depth1{display: flex; width:363px; justify-content: space-between;}
 .depth1 > li{font-size: 14px; color:#666; height:100%; line-height: 70px;}
-.depth2{position: fixed; width:1140px; top:65px; left:50%; transform:translate(-50%, 0) ; z-index: 10; display: flex;justify-content:space-between; line-height: 1.5; border:1px solid #eaeaea; background:#fff;opacity: 0; transition: 0.3s ease-out; visibility: hidden;}
+.depth2{position: fixed; width:1140px; top:97px; left:50%; transform:translate(-50%, 0) ; z-index: 10; display: flex;justify-content:space-between; line-height: 1.5; border:1px solid #eaeaea; background:#fff;opacity: 0; transition: 0.3s ease-out; visibility: hidden;}
 .depth2.on{opacity: 1; visibility: visible;}
 .depth2 > li{font-size:13px; padding:10px 0; width:25%; border-right:1px solid #eaeaea;}
 .depth2 > li:last-child{border:none}
@@ -32,7 +38,7 @@ input,button{outline: 0;background: inherit;border:none}
 
 .webify{font-weight: bold; border:1px solid #eaeaea; line-height: 1; padding:15px 25px; display: inline-block; margin-left:40px; font-size: 14px;}
 article{border-top:1px solid #eaeaea; padding:120px 0;}
-#section{margin-bottom:466px; margin-top:70px; z-index: 2; background: #fff;}
+#section{margin-bottom:466px; margin-top:102px; z-index: 2; background: #fff;}
 
 .main{height:800px; display: flex; align-items: center;}
 .main ul{display: flex; justify-content: space-between; align-items: center;}
@@ -83,16 +89,24 @@ article{border-top:1px solid #eaeaea; padding:120px 0;}
 .journey .slides .timebox{border-top:2px solid #eaeaea; padding-top:17px; font-size: 14px; color:#666; position: relative;}
 .journey .slides .timebox::before{content: ''; top: 0; left:50%; transform: translate(-50%, -50%); width:20px; height:20px; border-radius: 50%; display: block; border:2px solid #eaeaea; position: absolute; background: #fff;}
 
+
+.journey .button-box .prev-btn{position: absolute;left:0; bottom:75px; border: 1px solid #eaeaea; border-radius: 50%; width:50px; height:50px; display: flex; justify-content: center; align-items: center; background: #fff; opacity: 0; transition: 0.4s all;} 
+.journey .button-box .next-btn{position: absolute;right:0; bottom:75px; border: 1px solid #eaeaea; border-radius: 50%; width:50px; height:50px; display: flex; justify-content: center; align-items: center; background: #fff; opacity: 0; transition: 0.4s all;}
+.journey .button-box .prev-btn.on, .journey .button-box .next-btn.on{opacity:1;}
+
 .project{transition: 2s all; }
 .project .tabtitle{text-align: center; padding:50px 0 34px}
 .project .tabtitle li{display: inline-block; padding:10px; transition: 0.3s all; font-size:14px; cursor: pointer; margin:0 10px}
 .project .tabtitle li:hover{opacity: 0.8;}
 .project .tabtitle li.active{border:1px solid #eaeaea; border-radius: 15px;}
 .project .contents{overflow: hidden; transition: 2s all;}
-.project .contents > div{width:0; height:0; transition: 1s ease-in-out;float:left; opacity: 0; overflow: hidden; transform: scale(0); padding:1%;}
-.project .contents > div.active{opacity: 1;width:33.3333%; height:365px; transform:none; transition: transform 1s ease-in-out, width 1s, height 1s;}
+.project .contents > div{width:0; height:0; transition: 1s ease-in-out;float:left; opacity: 0;  transform: scale(0); padding:1%;}
+.project .contents > div.active{opacity: 1;width:33.3333%; height:365px; transform:none; transition: transform 1s ease-in-out, width 1s, height 1s; overflow: hidden;}
 .project .contents > div img {width:100%}
-.project .contents > div > a{border:1px solid #eaeaea; border-bottom: none;}
+.project .contents > div > a{border:1px solid #eaeaea; border-bottom: none; position: relative; transition: 0.4s all;}
+.project .contents > div > a::before{content:''; display: block; position: absolute; top:0; left:0; right:0; bottom:0; background: #000; opacity: 0; transition: 0.4s all;}
+.project .contents > div:hover > a::before{opacity: 0.6;}
+
 .project .contents > div:first-child > a{display: inline-block; width:100%; height:255px; background: url(../img/3.jpg) center; background-size: cover;}
 .project .contents > div:nth-child(2) > a{display: inline-block; width:100%; height:255px; background: url(../img/4.jpg) center; background-size: cover;}
 .project .contents > div:nth-child(3) > a{display: inline-block; width:100%; height:255px; background: url(../img/5.jpg) center; background-size: cover;}
@@ -144,7 +158,7 @@ article{border-top:1px solid #eaeaea; padding:120px 0;}
 #footer .Gimme a{display: inline-block; padding:12px 36px; background: #fff; color:#0c161c; border-radius: 5px; font-weight: bold;}
 #footer .sitemap{border-top:1px solid #333; border-bottom:1px solid#333; padding:50px 0;}
 #footer .sitemap p{font-size:16px;}
-#footer .sitemap .row > ul{display: flex; justify-content: space-between;}
+#footer .sitemap .row > ul{display: flex; justify-content: space-between; flex-wrap: wrap;} 
 #footer .sitemap .row > ul > li{width:23%; font-weight: bold;}
 #footer .sitemap .row > ul > li a{display: block; color:rgba(255,255,255,.6); font-size: 14px; padding:10px 0;}
 #footer .sitemap .row > ul > li span{display: block; color:rgba(255,255,255,.6); font-size: 14px; padding:10px 0; font-weight: normal;}
